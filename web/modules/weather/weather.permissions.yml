@@ -1,0 +1,6 @@
+view weather page:
+  title: 'View the weather page'
+  restrict access: true
+administer weather configuration:
+  title: 'Administer weather configuration'
+  restrict access: true
