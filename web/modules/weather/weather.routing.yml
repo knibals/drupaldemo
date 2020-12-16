@@ -1,15 +1,17 @@
-weather.example:
-  path: '/weather'
+weather.name:
+  path: '/weather/{city}/{country_code}'
   defaults:
-    _title: 'What\'s the weather?'
+    _title: 'What is the weather?'
     _controller: '\Drupal\weather\Controller\WeatherController::build'
+    city: 'Warsaw'
+    country_code: 'PL'
   requirements:
-    _permission: 'access content'
+    _permission: 'view the weather'
 
 weather.settings_form:
-  path: '/admin/config/system/weather'
+  path: '/admin/config/services/weather'
   defaults:
-    _title: 'weather settings'
+    _title: 'Weather settings'
     _form: 'Drupal\weather\Form\SettingsForm'
   requirements:
     _permission: 'administer weather configuration'
