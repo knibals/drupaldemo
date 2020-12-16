@@ -16,19 +16,29 @@ class WeatherController extends ControllerBase {
 
     $build['content'] = [
       '#type' => 'item',
-      '#markup' => $this->_fetch($city, $country_code),
+      '#markup' => print_r($this->_fetch($city, $country_code), true),
     ];
 
     return $build;
   }
 
-  private function _fetch($city, $country = null) {
+  private function _fetch($city, $country) {
 
-    return "The weather in " . $city . " (" . $country . ") is ...";
-  // if is_null($country):
+    $key = "be306854c8951ab7c36943603da82b4d";
+    $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", $city, $key);
+
+    if (!empty($country)) {
+      $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s", $city, $country, $key);
+    }
+    
+    try {
+      $client = \Drupal::httpClient();
+      $request = $client->request('GET', $url);
+      $response = $request->getBody();
+      return json_decode($response);
+    } catch (\Exception $e) {
+      watchdog_exception('weather', $e);
+    }
   
-  // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-  // api.openweathermap.org/data/2.5/weather?q={city name},{state code}&appid={API key}
-  // api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
- }
+  }
 }
