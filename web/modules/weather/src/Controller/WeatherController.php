@@ -14,12 +14,11 @@ class WeatherController extends ControllerBase {
    */
   public function build(string $city, string $country_code) {
 
-    $build['content'] = [
-      '#type' => 'item',
-      '#markup' => print_r($this->_fetch($city, $country_code), true),
+    return [
+      '#theme' => 'weather',
+      '#data' => $this->_fetch($city, $country_code),
     ];
-
-    return $build;
+    
   }
 
   private function _fetch($city, $country) {

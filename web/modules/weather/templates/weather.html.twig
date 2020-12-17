@@ -1,0 +1,11 @@
+<section>
+<h3>{{ data.name }}, {{ data.sys.country }}</h3>
+<img src="https://openweathermap.org/img/wn/{{ data.weather.0.icon }}@2x.png" title="{{ data.weather.0.description }}" alt=""> {{ data.main.temp }}&deg;C.<br />
+</section>
+
+<aside>
+    <ul>
+        <li>Sunrise: {{ data.sys.sunrise|format_date }}</li>
+        <li>Sunset: {{ data.sys.sunset|format_date }}</li>
+    </ul>
+</aside>
