@@ -25,10 +25,10 @@ class WeatherController extends ControllerBase {
   private function _fetch($city, $country) {
 
     $key = "be306854c8951ab7c36943603da82b4d";
-    $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", $city, $key);
+    $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", $city, $key);
 
     if (!empty($country)) {
-      $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s", $city, $country, $key);
+      $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s&units=metric", $city, $country, $key);
     }
     
     try {
