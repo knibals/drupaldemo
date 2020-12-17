@@ -34,8 +34,7 @@ class WeatherController extends ControllerBase {
     try {
       $client = \Drupal::httpClient();
       $request = $client->request('GET', $url);
-      $response = $request->getBody();
-      return json_decode($response);
+      return json_decode($request->getBody());
     } catch (\Exception $e) {
       watchdog_exception('weather', $e);
     }
