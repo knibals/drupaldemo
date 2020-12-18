@@ -23,11 +23,14 @@ class WeatherController extends ControllerBase {
 
   private function _fetch($city, $country) {
 
-    $key = "be306854c8951ab7c36943603da82b4d";
-    $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", $city, $key);
+    $config = \Drupal::config('weather.settings');
 
+    $key = $config->get('api.key');
+    $endpoint = $config->get('api.endpoint');
+
+    $url = sprintf("%s?q=%s&appid=%s&units=metric", $endpoint,$city, $key);
     if (!empty($country)) {
-      $url = sprintf("api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s&units=metric", $city, $country, $key);
+      $url = sprintf("%s?q=%s,%s&appid=%s&units=metric", $endpoint, $city, $country, $key);
     }
     
     try {

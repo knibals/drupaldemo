@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Weather module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function weather_install() {
+  // Set default values for config.
+  \Drupal::configFactory()->getEditable('weather.settings')
+    ->set('country', \Drupal::config('weather.settings')->get('country'))
+    ->set('city', \Drupal::config('weather.settings')->get('city'))
+    ->set('api.key', \Drupal::config('weather.settings')->get('api.key'))
+    ->set('api.endpoint', \Drupal::config('weather.settings')->get('api.endpoint'))
+    ->save();
+}

@@ -1,0 +1,22 @@
+# Read https://www.drupal.org/node/1905070 for more details about configuration
+# schema, types and type resolution.
+weather:
+  type: config_object
+  label: 'Weather fetcher configuration'
+  mapping:
+    country:
+      type: text
+      label: 'The default country to fetch'
+    city:
+      type: text
+      label: 'The default city to fetch'
+    api:
+      type: mapping
+      label: 'Group the API parameters'
+      mapping:
+        key:
+          type: text
+          label: 'The weather API connection key'
+        endpoint:
+          type: uri
+          label: 'The weather API endpoint'
