@@ -1,6 +1,6 @@
 weather.settings_form:
-  title: weather
-  description: Configure weather.
+  title: Weather
+  description: Configure the weather fetcher.
   parent: system.admin_config_system
   route_name: weather.settings_form
   weight: 10

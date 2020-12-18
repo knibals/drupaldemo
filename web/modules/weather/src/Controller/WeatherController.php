@@ -22,7 +22,7 @@ class WeatherController extends ControllerBase {
   }
 
   private function _fetch($city, $country) {
-
+    
     $config = \Drupal::config('weather.settings');
 
     $key = $config->get('api.key');
@@ -35,7 +35,11 @@ class WeatherController extends ControllerBase {
     
     try {
       $client = \Drupal::httpClient();
-      $request = $client->request('GET', $url);
+      $request = $client->request('GET', $url, [
+        'headers' => ['Accept-Encoding' => 'gzip'],
+        'decode_content' => false,
+        'timeout' => 5
+      ]);
       return json_decode($request->getBody());
     } catch (\Exception $e) {
       watchdog_exception('weather', $e);

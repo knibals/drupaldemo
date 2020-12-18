@@ -6,7 +6,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Configure weather settings for this site.
+ * Configure Weather settings for this site.
  */
 class SettingsForm extends ConfigFormBase {
 

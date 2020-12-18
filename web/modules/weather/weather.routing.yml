@@ -4,12 +4,12 @@ weather.name:
     _title: 'What is the weather?'
     _controller: '\Drupal\weather\Controller\WeatherController::build'
     city: 'Warsaw'
-    country_code: 'PL'
+    country_code: ''
   requirements:
     _permission: 'view the weather'
 
 weather.settings_form:
-  path: '/admin/config/services/weather'
+  path: '/admin/config/system/weather'
   defaults:
     _title: 'Weather settings'
     _form: 'Drupal\weather\Form\SettingsForm'
