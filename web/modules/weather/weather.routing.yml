@@ -1,7 +1,7 @@
 weather.name:
   path: '/weather/{city}/{country_code}'
   defaults:
-    _title: 'What is the weather?'
+    _title_callback: \Drupal\weather\Controller\WeatherController::title
     _controller: '\Drupal\weather\Controller\WeatherController::build'
     city: ''
     country_code: ''

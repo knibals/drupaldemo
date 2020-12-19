@@ -21,6 +21,17 @@ class WeatherController extends ControllerBase {
     
   }
   
+  /**
+   * construct the page title
+   */
+  public function title(string $city, string $country_code){
+    if(empty($city)){
+      $config = \Drupal::config('weather.settings');
+      $city = $config->get('city');
+    }
+    return $this->t("What's the weather like in %city?", ['%city' => $city]);
+  }
+
   private function _fetch($city, $country_code) {
     
     $config = \Drupal::config('weather.settings');
