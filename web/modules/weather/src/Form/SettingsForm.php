@@ -36,6 +36,13 @@ class SettingsForm extends ConfigFormBase {
       '#title' => $this->t('City'),
       '#default_value' => $this->config('weather.settings')->get('city'),
     ];
+    $form['country_code'] = [
+      '#size' => 3,
+      '#maxlength' => 3,
+      '#type' => 'textfield',
+      '#title' => $this->t('Country code'),
+      '#default_value' => $this->config('weather.settings')->get('country_code'),
+    ];
       '#type' => 'textfield',
       '#title' => $this->t('Example'),
       '#default_value' => $this->config('weather.settings')->get('example'),
@@ -50,6 +57,11 @@ class SettingsForm extends ConfigFormBase {
     if (!ctype_alnum($form_state->getValue('city'))) {
       $form_state->setErrorByName('city', $this->t('The city name looks incorrect.'));
     }
+    if (!empty($form_state->getValue('country_code'))) {
+      if (!ctype_alpha($form_state->getValue('country_code'))) {
+        $form_state->setErrorByName('country_code', $this->t('The country code should only have letters!'));
+      }
+    }
     }
     parent::validateForm($form, $form_state);
   }
@@ -60,6 +72,7 @@ class SettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('weather.settings')
       ->set('city', $form_state->getValue('city'))
+      ->set('country_code', $form_state->getValue('country_code'))
       ->save();
     parent::submitForm($form, $form_state);
   }
