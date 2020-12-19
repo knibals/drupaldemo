@@ -28,7 +28,14 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['example'] = [
+    $form['city'] = [
+      '#type' => 'textfield',
+      '#size' => 20,
+      '#maxlength' => 120,
+      '#required' => true,
+      '#title' => $this->t('City'),
+      '#default_value' => $this->config('weather.settings')->get('city'),
+    ];
       '#type' => 'textfield',
       '#title' => $this->t('Example'),
       '#default_value' => $this->config('weather.settings')->get('example'),
@@ -40,8 +47,9 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    if ($form_state->getValue('example') != 'example') {
-      $form_state->setErrorByName('example', $this->t('The value is not correct.'));
+    if (!ctype_alnum($form_state->getValue('city'))) {
+      $form_state->setErrorByName('city', $this->t('The city name looks incorrect.'));
+    }
     }
     parent::validateForm($form, $form_state);
   }
@@ -51,7 +59,7 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('weather.settings')
-      ->set('example', $form_state->getValue('example'))
+      ->set('city', $form_state->getValue('city'))
       ->save();
     parent::submitForm($form, $form_state);
   }
