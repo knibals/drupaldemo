@@ -3,7 +3,7 @@ weather.name:
   defaults:
     _title: 'What is the weather?'
     _controller: '\Drupal\weather\Controller\WeatherController::build'
-    city: 'Warsaw'
+    city: ''
     country_code: ''
   requirements:
     _permission: 'view the weather'

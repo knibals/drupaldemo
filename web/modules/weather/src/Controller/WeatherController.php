@@ -20,17 +20,25 @@ class WeatherController extends ControllerBase {
     ];
     
   }
-
+  
   private function _fetch($city, $country_code) {
     
     $config = \Drupal::config('weather.settings');
-
+    
     $key = $config->get('api.key');
     $endpoint = $config->get('api.endpoint');
 
-    $url = sprintf("%s?q=%s&appid=%s&units=metric", $endpoint,$city, $key);
-    if (!empty($country)) {
-      $url = sprintf("%s?q=%s,%s&appid=%s&units=metric", $endpoint, $city, $country, $key);
+    // if "$city" is empty (not given from the URL)
+    //  1. we don't care about the value of $country_code
+    //  2. we take the defaults from Config or DB
+    if (empty($city)) {
+      $city = $config->get('city'); // using the elvis operator
+      $country_code = $config->get('country_code'); // using the elvis operator
+    }
+    
+    $url = sprintf("%s?q=%s&appid=%s&units=metric", $endpoint, $city, $key);
+    if (!empty($country_code)) {
+      $url = sprintf("%s?q=%s,%s&appid=%s&units=metric", $endpoint, $city, $country_code, $key);
     }
     
     try {
