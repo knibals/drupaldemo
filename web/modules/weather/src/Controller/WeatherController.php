@@ -21,7 +21,7 @@ class WeatherController extends ControllerBase {
     
   }
 
-  private function _fetch($city, $country) {
+  private function _fetch($city, $country_code) {
     
     $config = \Drupal::config('weather.settings');
 

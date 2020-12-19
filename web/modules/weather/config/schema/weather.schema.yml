@@ -4,9 +4,9 @@ weather:
   type: config_object
   label: 'Weather fetcher configuration'
   mapping:
-    country:
+    country_code:
       type: text
-      label: 'The default country to fetch'
+      label: 'The code of the country to fetch'
     city:
       type: text
       label: 'The default city to fetch'

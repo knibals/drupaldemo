@@ -1,4 +1,4 @@
-country: 'PL'
+country_code: 'PL'
 city: 'Warsaw'
 api:
   key: 'be306854c8951ab7c36943603da82b4d'
