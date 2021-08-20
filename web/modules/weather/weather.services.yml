@@ -1,0 +1,4 @@
+services:
+  weather.fetcher:
+    class: Drupal\weather\Fetcher
+    argumentsn: ['@http.client']
