@@ -44,6 +44,8 @@ services:
       # MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
     volumes:
     - ./:/var/www/html:cached
+    ## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
+    # - drupal:/var/www/html
     # - files:/mnt/files # For XHProf and Xdebug profiler traces
 
   crond:
@@ -54,6 +56,8 @@ services:
     command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
     volumes:
     - ./:/var/www/html:cached
+    ## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
+    # - drupal:/var/www/html
 
   nginx:
     image: wodby/nginx:$NGINX_TAG
@@ -69,7 +73,8 @@ services:
       # NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
     volumes:
     - ./:/var/www/html:cached
-
+    ## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
+    # - drupal:/var/www/html
     labels:
     - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
 
@@ -254,5 +259,26 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+# x-mutagen:
+#  sync:
+#    defaults:
+#      ignore:
+#        vcs: true
+#        paths:
+#        - .DS_Store
+#        - .history
+#        - .idea
+#    drupal:
+#      alpha: "."
+#      beta: "volume://drupal"
+#      configurationBeta:
+#        permissions:
+#          defaultFileMode: 0644
+#          defaultDirectoryMode: 0755
+#          defaultOwner: "id:501"
+#          defaultGroup: "id:20"
+
 # volumes:
+## For macOS users (Mutagen)
+#  drupal:
 #   files:
