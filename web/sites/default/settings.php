@@ -765,6 +765,20 @@ $settings['entity_update_backup'] = TRUE;
  */
 $settings['migrate_node_migrate_type_classic'] = FALSE;
 
+
+$databases['default']['default'] = array (
+  'database'  => getenv('DB_NAME'),
+  'username'  => getenv('DB_USER'),
+  'password'  => getenv('DB_PASSWORD'),
+  'host'      => getenv('DB_HOST'),
+  'port'      => getenv('DB_PORT'),
+  'driver'    => getenv('DB_DRIVER'),
+  'prefix'    => '',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\' . getenv('DB_DRIVER'),
+);
+
+$settings['config_sync_directory'] = '../config/sync';
+
 /**
  * Load local development override configuration, if available.
  *
