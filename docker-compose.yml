@@ -10,9 +10,9 @@ services:
       MYSQL_DATABASE: $DB_NAME
       MYSQL_USER: $DB_USER
       MYSQL_PASSWORD: $DB_PASSWORD
-#    volumes:
+    volumes:
+    - /mariadb/data/drupaldemo:/var/lib/mysql
 #      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
-#      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
   php:
     image: wodby/drupal-php:$PHP_TAG
@@ -20,7 +20,6 @@ services:
     environment:
       PHP_FPM_USER: www-data
       PHP_FPM_GROUP: www-data
-      # COLUMNS: 80 # Set 80 columns for docker exec -it.
       # PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
       # PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S opensmtpd:25
       DB_HOST: $DB_HOST
@@ -36,7 +35,6 @@ services:
       # PHP_XDEBUG_IDEKEY: "my-ide"
       # PHP_XDEBUG_CLIENT_HOST: 172.17.0.1 # Linux
       # PHP_XDEBUG_CLIENT_HOST: host.docker.internal # Docker 18.03+ Mac/Win
-      # PHP_XDEBUG_CLIENT_HOST: 10.0.75.1 # Windows, Docker < 18.03
       # PHP_XDEBUG_LOG: /tmp/php-xdebug.log
       ## PHPUnit Drupal testing configurations
       # SIMPLETEST_BASE_URL: "http://nginx"
