@@ -1,0 +1,7 @@
+name: Ajax data loader
+type: module
+description: Load data into a select2 field
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - select2

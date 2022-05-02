@@ -1,0 +1,7 @@
+ajax_data_loader.who_are_you:
+  path: '/who-are-you'
+  defaults:
+    _title: 'Who are you?'
+    _form: 'Drupal\ajax_data_loader\Form\WhoAreYouForm'
+  requirements:
+    _permission: 'access content'
