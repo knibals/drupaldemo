@@ -1,7 +1,7 @@
+_core:
+  default_config_hash: 2QUfwZyXjAGauvZxchPbV8ij-l_uEMEln_JH63cJ3KU
 country_code: PL
 city: Warsaw
 api:
   key: be306854c8951ab7c36943603da82b4d
   endpoint: api.openweathermap.org/data/2.5/weather
-_core:
-  default_config_hash: 2QUfwZyXjAGauvZxchPbV8ij-l_uEMEln_JH63cJ3KU
