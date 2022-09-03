@@ -5,3 +5,4 @@ city: Warsaw
 api:
   key: be306854c8951ab7c36943603da82b4d
   endpoint: api.openweathermap.org/data/2.5/weather
+langcode: fr
