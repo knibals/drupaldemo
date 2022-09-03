@@ -1,0 +1,11 @@
+uuid: c218aec7-a439-490c-be2c-c08d8d94882b
+langcode: fr
+status: true
+dependencies: {  }
+name: Page
+type: page
+description: 'Contenu permanent et très peu mis à jour'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
