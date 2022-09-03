@@ -1,0 +1,20 @@
+name: Loti
+type: theme
+description: Theme boilerplate HTML5/CSS3 (SCSS), légèrement responsive
+core_version_requirement: ^9 || ^10
+base theme: false
+
+libraries:
+  - loti/global-styling
+
+libraries-override:
+  system/base: false
+  views/views.module: false
+
+regions:
+  help: Help
+  footer: Footer
+  header: Header
+  sidebar: Sidebar
+  content: Content
+  highlighted: Highlighted

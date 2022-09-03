@@ -1,0 +1,16 @@
+{
+  "name": "loti",
+  "private": true,
+  "scripts": {
+    "livereload": "livereload css",
+    "sass-watch": "sass --watch scss:css",
+    "start": "run-p sass-watch livereload",
+    "sass-compile": "sass --style compressed --no-source-map scss:css"
+  },
+  "devDependencies": {
+    "sass": "^1.54.5",
+    "livereload": "^0.9.3",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {}
+}

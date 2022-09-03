@@ -2,7 +2,6 @@
 /web/modules/contrib/
 /web/themes/contrib/
 
-/vendor/
 
 # Ignore configuration files that may contain sensitive information.
 /web/sites/*/settings.local.php
@@ -10,15 +9,16 @@
 /web/sites/development.services.local.yml
 
 # Ignore paths that contain user-generated content.
-web/sites/*/files
-web/sites/*/private
+/web/sites/*/files
+/web/sites/*/private
 
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
 
 
 /bdd-postgres/
-/*.css.map
-themes/**/*.css.map
+/web/themes/**/css
 
 /**/node_modules/
+
+/vendor/

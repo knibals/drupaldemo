@@ -1,0 +1,15 @@
+global-styling:
+  # js:
+  #   js/loti.js: {}
+  css:
+    base:
+      css/elements.css: {}
+      css/typography.css: {}
+    component:
+      css/components/form.css: {}
+      css/components/menu.css: {}
+      css/components/messages.css: {}
+    layout:
+      css/layout.css: {}
+    theme:
+      css/print.css: { media: print }
