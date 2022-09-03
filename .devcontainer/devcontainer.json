@@ -1,0 +1,29 @@
+{
+	"name": "Drupal demo",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"service": "php",
+	"workspaceFolder": "/var/www/html",
+	"settings": {
+		"php.validate.executablePath": "/usr/local/bin/php"
+	},
+	"extensions": [
+		"whatwedo.twig",
+		"ikappas.phpcs",
+		"swordev.phpstan",
+		"wwm.better-align",
+		"xdebug.php-debug",
+		"junstyle.php-cs-fixer",
+		"esbenp.prettier-vscode",
+		"wayou.vscode-todo-highlight",
+		"neilbrayfield.php-docblocker",
+		"bmewburn.vscode-intelephense-client",
+		"mehedidracula.php-namespace-resolver"
+	],
+	"remoteUser": "wodby",
+	"runServices": ["php"],
+	"forwardPorts": [8000],
+	"shutdownAction": "none",
+	"postCreateCommand": "composer require --no-progress --dev squizlabs/php_codesniffer phpstan/phpstan"
+}
